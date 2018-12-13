@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>simple crystal game</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Crystalland!</h1>
+        <p>
+            <h2>How to Play.</h2>
+            <hr>
+
+        </p>
+
+    </div>
+    <h1>Number to Guess: <span id="number-to-guess"></span></h1>
+    <div id="crystals">
+    </div>
+
+    <!-- <div class="row">
+        <div id="crystals-1" class=col-md-3>
+
+            <img class="crystal-image" src="assets/images 12.46.03 PM/Diamond_Transparent_Clip_Art_Image.png" alt="bluecrystal">
+    
+        </div>
+        <div id="crystals-1" class=col-md-3>
+    
+            <img class="crystal-image" src="assets/images 12.46.03 PM/Diamond_Transparent_Clip_Art_Image.png" alt="Diamond_Transparent_Clip_Art_Image">
+    
+        </div>
+        <div id="crystals-1" class=col-md-3>
+    
+            <img class="crystal-image" src="assets/images 12.46.03 PM/Diamond_Transparent_Clip_Art_Image.png" alt="Icon_Crystal_Red">
+    
+        </div>
+        <div id="crystals-1" class=col-md-3>
+    
+            <img class="crystal-image" src="assets/images 12.46.03 PM/Diamond_Transparent_Clip_Art_Image.png" alt="Red_Diamond_PNG_Clipart-801">
+    
+        </div>
+    </div> -->
+
+    <!-- Javascript -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+        //document.ready to make sure everything is loaded in our document first before any code execution
+        $(document).ready(function () {
+            // console.log("ready!");
+        });
+       
+       let targetNumber = [];
+       
+
+        //randomly select a number to store in targetNumber
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        console.log(randomNumber);
+
+     
+
+
+
+        //this code will dynamically store our targetNumber in our number-to-guess class
+        $('<#targetNumber>').html('<p>' , '.number');
+            $('#number-to-guess').append(randomNumber);
+       
+         
+    
+
+
+        //create a counter to track total user clicks
+        let counter = 0;
+        
+
+        //We must create an array to store the different values for the four different crystals
+        let numberOptions = [11, 3, 5, 15];
+
+        //Create a for loop to iterate through our array and create a crystal for every numberOption
+        for (var i = 0; i < numberOptions.length; i++) {
+
+            //for each iteration, we are going to create an imageCrystal
+            let imageCrystal = $("<img>");
+
+            //We want to give our crystals a class so that they can be styled by our css
+            imageCrystal.addClass('crystal-image');
+
+            //then we want to link our image of the crystal to our code so that our element are created dynamically and ont he DOM
+            imageCrystal.attr('src', 'assets/images 12.46.03 PM/Diamond_Transparent_Clip_Art_Image.png');
+
+            //now we want our crystals to have the same data value as our array 
+            //we assign our imagecrystal variable a new attribute
+            imageCrystal.attr('data-crystalvalue', numberOptions[i]);
+
+            //now we want to make our crystals appear on the page, for this we will append them to 
+            $('#crystals').append(imageCrystal);
+
+        }
+
+        // Here we created an on-click event that responds to button clicks of the crystal image.
+        $(".crystal-image").on("click", function () {
+            //each time the user clicks the crystal the counter goes up by interval of 1
+
+            var crystalValue = ($(this).attr("data-crystalvalue"));
+            crystalValue = parseInt(crystalValue);
+
+            counter += crystalValue;
+
+            // Clicking the button triggers an alert message + the number of times the user clicked the crystals
+            alert("New Score: " + counter , crystalValue);
+
+
+            let newScore = counter + crystalValue ++; 
+//if newscore equals targetNumber make conditional to say user wins
+//if newscore >= targetNumber make a conditional to say user loses
+            //add some conditionals to instruct DOM of win or loss
+            if (newScore === randomNumber) {
+                alert("You Win!");
+            }
+            //else statement to alert user loss
+            else if (newScore >= randomNumber) {
+
+                alert("You lose");
+            }
+            //
+
+        });
+    </script>
+</body>
+
+</html>
