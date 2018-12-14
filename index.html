@@ -23,30 +23,7 @@
     <div id="crystals">
     </div>
 
-    <!-- <div class="row">
-        <div id="crystals-1" class=col-md-3>
 
-            <img class="crystal-image" src="assets/images 12.46.03 PM/Diamond_Transparent_Clip_Art_Image.png" alt="bluecrystal">
-    
-        </div>
-        <div id="crystals-1" class=col-md-3>
-    
-            <img class="crystal-image" src="assets/images 12.46.03 PM/Diamond_Transparent_Clip_Art_Image.png" alt="Diamond_Transparent_Clip_Art_Image">
-    
-        </div>
-        <div id="crystals-1" class=col-md-3>
-    
-            <img class="crystal-image" src="assets/images 12.46.03 PM/Diamond_Transparent_Clip_Art_Image.png" alt="Icon_Crystal_Red">
-    
-        </div>
-        <div id="crystals-1" class=col-md-3>
-    
-            <img class="crystal-image" src="assets/images 12.46.03 PM/Diamond_Transparent_Clip_Art_Image.png" alt="Red_Diamond_PNG_Clipart-801">
-    
-        </div>
-    </div> -->
-
-    <!-- Javascript -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -55,29 +32,32 @@
         $(document).ready(function () {
             // console.log("ready!");
         });
-       
-       let targetNumber = [];
-       
 
+        let targetNumber = [];
+
+        //Since we want our randomNumber to be between 19 and 120 we need to start our randomNumber generator at 19
+        //To do this we will create two variables
+        let max = 120;
+        let min = 19;
         //randomly select a number to store in targetNumber
-        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
         console.log(randomNumber);
 
-     
+
 
 
 
         //this code will dynamically store our targetNumber in our number-to-guess class
-        $('<#targetNumber>').html('<p>' , '.number');
-            $('#number-to-guess').append(randomNumber);
-       
-         
-    
+        $('<#targetNumber>').html('<p>', '.number');
+        $('#number-to-guess').append(randomNumber);
+
+
+
 
 
         //create a counter to track total user clicks
         let counter = 0;
-        
+
 
         //We must create an array to store the different values for the four different crystals
         let numberOptions = [11, 3, 5, 15];
@@ -113,12 +93,12 @@
             counter += crystalValue;
 
             // Clicking the button triggers an alert message + the number of times the user clicked the crystals
-            alert("New Score: " + counter , crystalValue);
+            alert("New Score: " + counter, crystalValue);
 
 
-            let newScore = counter + crystalValue ++; 
-//if newscore equals targetNumber make conditional to say user wins
-//if newscore >= targetNumber make a conditional to say user loses
+            let newScore = counter + crystalValue++;
+            //if newscore equals targetNumber make conditional to say user wins
+            //if newscore >= targetNumber make a conditional to say user loses
             //add some conditionals to instruct DOM of win or loss
             if (newScore === randomNumber) {
                 alert("You Win!");
